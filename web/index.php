@@ -1,28 +1,13 @@
 <?php
+include_once 'author.php';
 
-echo "12390-";
-/*
-require('../vendor/autoload.php');
+session_start();
 
-$app = new Silex\Application();
-$app['debug'] = true;
+if(isset($_SESSION["name"]) && $_SESSION["name"] !== ""){
+    echo "Приветствую тебя, ".$_SESSION["name"];
+    echo '<br><a href="exit.php">Выход</a>';
+}
+else {
+    include_once 'form.php';
+}
 
-// Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
-));
-
-// Register view rendering
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
-));
-
-// Our web handlers
-
-$app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
-});
-
-$app->run();
-*/
